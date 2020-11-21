@@ -16,3 +16,10 @@ h1 {
 p {
     font-family: "Source Sans Pro", sans-serif;
 }
+
+
+.b-sticky {
+position: -webkit-sticky;
+position: sticky;
+top: 20px;
+}
