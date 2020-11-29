@@ -23,3 +23,7 @@ position: -webkit-sticky;
 position: sticky;
 top: 20px;
 }
+
+.b-cover {
+    object-fit: cover;
+}
