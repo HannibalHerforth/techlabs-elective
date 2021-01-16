@@ -3417,7 +3417,7 @@
           mainContent.classList.remove("b-hidden")
           const priceRange = document.getElementById("price-range")
           priceRange.innerText=lowestValue+" - "+highestValue;
-        },5000)
+        },1000)
         // fetch("https://backend.dk/søgning", {
         //   bedrooms, m2, zip, bathrooms
         // }).then(function(response){})
@@ -3463,9 +3463,10 @@
   <section class="container mt-5">
     <div class="row row-cols-2">
       <div class="col-md-6">
-        <h1>Overview of house prices in <script>document.write(zip)</script></h1> 
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores atque quae voluptas ad aliquam alias, facere, corporis sequi eligendi, tempora quas tenetur provident nam magni minus eaque sit aut id.</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa beatae qui animi voluptate similique nihil</p>
+        <h1 class="text-primary">$<script>document.write(predictionValue)</script></h1>
+        <h1>is the predicted price of your future home</h1> 
+        <p>A house in the <script>document.write(zip)</script> neighbourhood is a great option. Based on our extensive data a house in this neighbourhood with <script>document.write(m2)</script> feet, <script>document.write(bedrooms)</script> bedrooms and <script>document.write(bathrooms)</script> bathrooms has the estimated price shown above.</p>
+        <p>If you want to look for cheaper options try changing the amount of bedrooms, bathrooms or square metre as these has the highest impact on the price</p>
       </div>
       <div class="col-md-6">
         <img class="b-cover" src="overview.jpeg" width="100%" height="100%">
@@ -3480,12 +3481,12 @@
       <div class="col-md-6">
         <h1>Range of pricing</h1>
         <h2 class="text-primary" id="price-range"></h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores atque quae voluptas ad aliquam alias, facere, corporis sequi eligendi, tempora quas tenetur provident nam magni minus eaque sit aut id.</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa beatae qui animi voluptate similique nihil</p>
+        <p>There is <script>document.write(propertiesInZipCode.length)</script> properties in <script>document.write(zip)</script> that match your requirements for at future home. This can help inform you decision and understand the different prices of properties in the area.</p>
+        <p>If you hover over the chart you are able to see the different properties and their selling price</p>
       </div>
     </div>
   </section>
-  <section class="container mt-5" >
+  <section class="container mt-5 mb-4" >
     <div class="row justify-content-md-center mb-4">
       <h1>What can you get in this area in the price range?</h1>
     </div>
@@ -3494,7 +3495,7 @@
         <img class="card-img-top pt-3" src="house1.jpg" alt="Card image cap">
         <div class="card-body">
           <h5 class="card-title">Stylish apartment</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <p class="card-text">A nice house in a great neighbourhood. This modern and stylish apartment is a great option with <script>document.write(bedrooms)</script> bedrooms.</p>
           <a href="#" class="btn btn-primary">Check it out</a>
         </div>
       </div>
@@ -3502,15 +3503,15 @@
         <img class="card-img-top pt-3" src="House2.jpg" alt="Card image cap">
         <div class="card-body">
           <h5 class="card-title">A nice cottage</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <p class="card-text">This is a great little cottage in boston. It is in a great neighbourhood with good school and facilities.</p>
           <a href="#" class="btn btn-primary">Check it out</a>
         </div>
       </div>
-      <div class="card col-sm mr-3" style="width: 18rem;">
+      <div class="card col-sm mr-3 mb" style="width: 18rem;">
         <img class="card-img-top pt-3" src="House3.jpeg" alt="Card image cap">
         <div class="card-body">
           <h5 class="card-title">Homey family apartment</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <p class="card-text">For the family that is looking to a great place to live. It is a cosy apartment with a really nice view of a park. </p>
           <a href="#" class="btn btn-primary">Check it out</a>
         </div>
       </div>
@@ -3522,31 +3523,63 @@ var ctx = document.getElementById('myChart').getContext('2d');
 var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        labels: [...propertiesInZipCode],
         datasets: [{
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
+            label: '# House prices in the area',
+            data: [...propertyPrices],
             backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
+                'rgba(0, 123, 255, 0.2)',
+                'rgba(0, 123, 255, 0.2)',
+                'rgba(0, 123, 255, 0.2)',
+                'rgba(0, 123, 255, 0.2)',
+                'rgba(0, 123, 255, 0.2)',
+                'rgba(0, 123, 255, 0.2)',
+                'rgba(0, 123, 255, 0.2)',
+                'rgba(0, 123, 255, 0.2)',
+                'rgba(0, 123, 255, 0.2)',
+                'rgba(0, 123, 255, 0.2)',
+                'rgba(0, 123, 255, 0.2)',
+                'rgba(0, 123, 255, 0.2)',
+                'rgba(0, 123, 255, 0.2)',
+                'rgba(0, 123, 255, 0.2)',
+                'rgba(0, 123, 255, 0.2)',
+                'rgba(0, 123, 255, 0.2)',
+                'rgba(0, 123, 255, 0.2)',
+                'rgba(0, 123, 255, 0.2)',
+                'rgba(0, 123, 255, 0.2)',
+                'rgba(0, 123, 255, 0.2)',
             ],
             borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
+                'rgba(0, 123, 255, 1)',
+                'rgba(0, 123, 255, 1)',
+                'rgba(0, 123, 255, 1)',
+                'rgba(0, 123, 255, 1)',
+                'rgba(0, 123, 255, 1)',
+                'rgba(0, 123, 255, 1)',
+                'rgba(0, 123, 255, 1)',
+                'rgba(0, 123, 255, 1)',
+                'rgba(0, 123, 255, 1)',
+                'rgba(0, 123, 255, 1)',
+                'rgba(0, 123, 255, 1)',
+                'rgba(0, 123, 255, 1)',
+                'rgba(0, 123, 255, 1)',
+                'rgba(0, 123, 255, 1)',
+                'rgba(0, 123, 255, 1)',
+                'rgba(0, 123, 255, 1)',
+                'rgba(0, 123, 255, 1)',
+                'rgba(0, 123, 255, 1)',
+                'rgba(0, 123, 255, 1)',
+                'rgba(0, 123, 255, 1)',
+                'rgba(0, 123, 255, 1)',
             ],
             borderWidth: 1
         }]
     },
     options: {
         scales: {
+          xAxes: [{
+            display: false
+          }],
             yAxes: [{
                 ticks: {
                     beginAtZero: true
